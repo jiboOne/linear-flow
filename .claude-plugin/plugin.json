@@ -1,1 +1,15 @@
-
+{
+  "name": "linear-flow",
+  "displayName": "Linear Flow",
+  "description": "Linear and GitLab wrapper around go-toolkit for corebankos — /shape slices a PRD/BRD, /breakdown turns briefs, specs and plans into Linear issues, /start opens a linked draft MR, /ship hands it to review. Git moves the board; people merge and sign off.",
+  "version": "0.2.0",
+  "author": {
+    "name": "corebankos"
+  },
+  "keywords": [
+    "linear",
+    "gitlab",
+    "workflow",
+    "go-toolkit"
+  ]
+}
