@@ -22,6 +22,19 @@ when a call fails and tell the user what changed.
 | `PRO` | Product | COR | Product, design |
 | `PLA` | Platform | — | platform engineering |
 
+## GitLab integration mode
+
+| Team | Mode | Evidence |
+|---|---|---|
+| `BAC` | `manual` | 2026-10-29: chat-service MR !20, titled `Draft: feat: BAC-4 …`, never attached to BAC-4 and the issue stayed Todo. |
+| others | `connected` (unverified) | no MR observed yet; switch to `manual` on the first miss. |
+
+`connected` means Linear's GitLab integration attaches MRs and moves
+statuses; linear-flow only re-reads and reports. `manual` means linear-flow
+attaches the MR and sets In Progress / In Review / In QA itself (see the
+"Status modes" rule in the skill). Flip a team back to `connected` once the
+integration is installed for the group and a fresh MR attaches on its own.
+
 ## Statuses on BAC today
 
 Backlog, Todo, In Progress, Done, Canceled, Duplicate.

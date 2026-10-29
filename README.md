@@ -19,7 +19,10 @@ the admin, people decide, merge and sign off.
   `claude mcp add --transport http linear-server https://mcp.linear.app/mcp`, then `/mcp` to sign in.
 - `glab` recommended (`brew install glab && glab auth login`). Without it,
   MRs are created with git push options and reviewers are added by hand.
-- Linear ↔ GitLab integration enabled with MR status automations per team.
+- Linear ↔ GitLab integration enabled with MR status automations per team
+  (`connected` mode). Where it isn't, mark the team `manual` in
+  `skills/using-linear-flow/reference/workspace.md` and linear-flow attaches
+  the MR and sets In Progress / In Review / In QA itself. Done is never set.
 
 ## Install locally
 

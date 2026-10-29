@@ -87,8 +87,10 @@ path; the first TDD commit on the fix path):
    --target-branch <base> --title ... --description ...
    --remove-source-branch`. Without it, the push-option form in
    `linear-flow:using-linear-flow`.
-3. Re-read the issue: MR attached and status In Progress? Apply the
-   "never drag a card" rule from linear-flow:using-linear-flow if not.
+3. Apply the "Status modes" rule from linear-flow:using-linear-flow for
+   this team: in `manual` mode attach the MR URL and set In Progress; in
+   `connected` mode re-read the issue and check the MR is attached and the
+   status is In Progress, reporting if not (never drag a card).
 4. Comment on the issue once, only with what the integration doesn't
    show: the spec and plan paths (and later plan paths when written).
 

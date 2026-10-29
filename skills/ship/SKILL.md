@@ -76,9 +76,12 @@ Without it, give the MR URL and ask the user to add reviewers.
 
 ## 6. Check Linear and report
 
-Re-read the issue: MR attached, status In Review (if the team has that
-status). Apply the "never drag a card" rule if not. Report the MR URL,
-the gate summary, and the issue status. Stop here.
+Apply the "Status modes" rule from linear-flow:using-linear-flow: in
+`manual` mode attach the MR URL (if not already attached) and set In
+Review when the team has that status; in `connected` mode re-read the
+issue and check the MR is attached and the status is In Review, reporting
+if not (never drag a card). Report the MR URL, the gate summary, and the
+issue status. Stop here.
 
 ## After review
 
@@ -87,5 +90,7 @@ the gate summary, and the issue status. Stop here.
 - **Merge only when the user explicitly asks to merge this MR.** Then
   follow go-toolkit:finishing-a-development-branch's merge and cleanup
   steps exactly (squash message without trailers, verify main, remove the
-  worktree). Afterwards re-read the issue and report its status. Never set
-  Done — QA does that after sign-off.
+  worktree). Afterwards apply the "Status modes" rule: in `manual` mode
+  set In QA when the team has that status; in `connected` mode re-read the
+  issue and report its status. Never set Done — QA does that after
+  sign-off.

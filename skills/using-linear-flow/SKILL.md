@@ -97,16 +97,33 @@ Target workflow: Triage → Backlog → Todo → In Progress → In Review → I
 | Status | Who sets it |
 |---|---|
 | Triage, Backlog, Todo | Product owner (planning) — linear-flow never moves issues into or out of these, except creating new issues in the team's default |
-| In Progress | GitLab integration, when the draft MR opens |
-| In Review | GitLab integration, when review is requested |
-| In QA | GitLab integration, on merge |
-| Done | QA only, after sign-off on staging |
+| In Progress | When the draft MR opens — GitLab integration in `connected` mode, linear-flow in `manual` mode |
+| In Review | When review is requested — same split |
+| In QA | On merge — same split |
+| Done | QA only, after sign-off on staging. **Never set by linear-flow in any mode** |
 
-**Never drag a card.** After an MR action, re-read the issue: if the MR is
-attached but the status didn't move, the team's MR automation is missing —
-tell the user, and set the status through the MCP only if they explicitly
-ask. If the MR isn't attached at all, the GitLab integration isn't linking
-— check the MR title has the ID, then tell the user. Never set Done.
+**Status modes.** `reference/workspace.md` records per team whether the
+GitLab integration is `connected` or `manual`. Read it before any MR
+action.
+
+- `connected` — **never drag a card.** After an MR action, re-read the
+  issue: if the MR is attached but the status didn't move, the team's MR
+  automation is missing — tell the user, and set the status through the
+  MCP only if they explicitly ask. If the MR isn't attached at all, the
+  integration isn't linking — check the MR title has the ID, tell the
+  user, and offer to switch the team to `manual` in workspace.md.
+- `manual` — linear-flow does what the integration would have done, right
+  after the MR action, and nothing more:
+  1. Attach the MR URL to the issue (`create_attachment`, title = the MR
+     title) if no attachment with that URL exists yet.
+  2. Set the status for that step — In Progress on draft MR open, In Review
+     on ready + reviewers requested, In QA on merge — but only if the team
+     has the status; otherwise say so once and leave it.
+  3. Re-read and report the status. Skip step 2 if the issue is already at
+     or past the target status (someone moved it by hand).
+
+In both modes: never move an issue into or out of Triage, Backlog or Todo
+except by these transitions, and never set Done.
 
 `reference/workspace.md` records which of these statuses actually exist on
 each team today; if one is missing, skip that transition and say so once.
