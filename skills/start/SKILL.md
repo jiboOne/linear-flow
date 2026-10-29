@@ -37,7 +37,9 @@ step.
 1. **A linked MR** on the issue, or a branch whose name contains the ID or
    that the issue's status line names. → Check that branch out (or its
    worktree). If its MR lacks the ID in the title or `Fixes <ID>` in the
-   description, fix the MR, not the branch name. Resume where go-toolkit's
+   description, fix the MR, not the branch name. **Before resuming**, run
+   step 4.3 (status sync) so the issue carries the MR link and In Progress
+   even if an earlier session missed it. Then resume where go-toolkit's
    artifacts say the work is (plan checkboxes, commits).
 2. **A plan** in `docs/plans` referenced by the issue or matching it. →
    Go to step 4 with `go-toolkit:subagent-driven-development` (or
@@ -87,10 +89,11 @@ path; the first TDD commit on the fix path):
    --target-branch <base> --title ... --description ...
    --remove-source-branch`. Without it, the push-option form in
    `linear-flow:using-linear-flow`.
-3. Apply the "Status modes" rule from linear-flow:using-linear-flow for
-   this team: in `manual` mode attach the MR URL and set In Progress; in
-   `connected` mode re-read the issue and check the MR is attached and the
-   status is In Progress, reporting if not (never drag a card).
+3. **Immediately**, in the same turn as the MR creation, apply the
+   "Status modes" rule from linear-flow:using-linear-flow for this team:
+   in `manual` mode attach the MR URL and set In Progress; in `connected`
+   mode re-read the issue and check the MR is attached and the status is
+   In Progress, reporting if not (never drag a card).
 4. Comment on the issue once, only with what the integration doesn't
    show: the spec and plan paths (and later plan paths when written).
 

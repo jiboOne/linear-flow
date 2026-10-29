@@ -68,6 +68,10 @@ linear-flow:start step 4, but not as a draft):
 With `glab`: `glab mr update <id> --ready --title ... --description ...`.
 Without it: the push-option form in linear-flow:using-linear-flow.
 
+If the MR was created in this step (no /start), run the "Status modes"
+sync for *draft MR created* right away — attach the MR and, in `manual`
+mode, set In Progress — before going on to reviewers.
+
 ## 5. Request review
 
 Ask who reviews unless the user already said (one reviewer; two when
@@ -90,7 +94,8 @@ issue status. Stop here.
 - **Merge only when the user explicitly asks to merge this MR.** Then
   follow go-toolkit:finishing-a-development-branch's merge and cleanup
   steps exactly (squash message without trailers, verify main, remove the
-  worktree). Afterwards apply the "Status modes" rule: in `manual` mode
-  set In QA when the team has that status; in `connected` mode re-read the
-  issue and report its status. Never set Done — QA does that after
-  sign-off.
+  worktree). Immediately after the merge, apply the "Status modes" rule:
+  in `manual` mode set In QA when the team has that status; in `connected`
+  mode re-read the issue and report its status. If the user merged in the
+  GitLab UI and tells you, do the same sync then. Never set Done — QA does
+  that after sign-off.

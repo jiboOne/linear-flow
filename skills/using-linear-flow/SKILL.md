@@ -122,8 +122,19 @@ action.
   3. Re-read and report the status. Skip step 2 if the issue is already at
      or past the target status (someone moved it by hand).
 
+**When the sync runs.** Immediately after the MR event, in the same turn,
+before continuing any other work — never deferred to the end of a session:
+
+| MR event | Target status | Where it fires |
+|---|---|---|
+| Draft MR created (or found already open on a resume) | In Progress | /start step 4, /ship step 4 when /start was skipped |
+| MR marked ready + reviewers requested | In Review | /ship step 6 |
+| MR merged — by Claude on request, or reported by the user ("BAC-142 is merged") | In QA | /ship "After review", or the "Talking to Linear" table |
+
 In both modes: never move an issue into or out of Triage, Backlog or Todo
-except by these transitions, and never set Done.
+except by these transitions, and never set Done. When the target status is
+missing on the team, leave the current status, say so once, and still
+attach the MR.
 
 `reference/workspace.md` records which of these statuses actually exist on
 each team today; if one is missing, skip that transition and say so once.
@@ -170,6 +181,7 @@ Handle these directly with the Linear MCP, no command needed:
 | "scope changed on BAC-142: …" | Comment on the issue with the change; do not edit the description unless asked |
 | "log a bug on BAC-142: …" | Create a sub-issue of BAC-142, Type `Bug`, same team and project, assigned to the parent's assignee; show it first |
 | "split BAC-142" | Propose the split (titles, points, blockers); create on approval; the parent becomes the first part or is canceled — ask which |
+| "BAC-142 is merged" / "MR !20 got merged" | Run the MR-merged sync from "Status modes": in `manual` mode set In QA (if the team has it) and make sure the MR is attached; in `connected` mode re-read and report |
 
 Keep decisions on the issue, not in chat: when a design decision during a
 go-toolkit session changes an issue's scope or acceptance, offer to
